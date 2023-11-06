@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&family=Ubuntu:ital,wght@0,500;0,700;1,400&display=swap');
+
+:root {
+  --primary_color: #e74c3c;
+  --white_color: #fff;
+
+  --ubuntu: "Ubuntu";
+  --righteous: "Righteous";
+
+  --box-shadow: 10px 10px 5px rgba(0,0,0,.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins";
+}
+
+header {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+
+.logo img {
+  display: block;
+  /*object-fit: cover;*/
+  width: 20%;
+}
+
+/* ... Your existing CSS rules ... */
+
+.navbar {
+  display: flex;
+  justify-content: flex-end; /* Align the navbar to the right-hand side */
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar nav li {
+  list-style-type: none;
+  margin: 0 14px;
+  display: inline-block; /* Set the list items to display as inline-block */
+}
+
+.navbar nav li a {
+  font-size: 1rem; /* Update the font size to make it smaller */
+  color: var(--white_color);
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Style for the active link */
+.navbar nav li a.active {
+  background-color: var(--primary_color);
+  color: var(--white_color);
+}
+
+/* Add a hover effect */
+.navbar nav li a:hover {
+  background-color: var(--primary_color);
+  color: var(--white_color);
+}
+
+/* ... Your existing CSS rules ... */
+/* ... Your existing CSS rules ... */
+
+#showcase {
+  
+  background-size: cover; /* Make the background image cover the entire container */
+  min-height: 100vh; /* Set the minimum height to cover the full screen height */
+  min-width: 100vw; /*Set the minimum width to cover the full screen width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.content h2 {
+  font-size: 1.5rem; /* Change the font size to 2rem for smaller text */
+  margin-bottom: 10px;
+  color: black; /* Change the color of h2 to black */
+  text-align: left; /* Align h2 text to the left */
+  margin-left: 20px; /* Add a small gap from the left edge of the screen */
+}
+
+.content h3 {
+  font-size: 1.0rem; /* Change the font size to 1.5rem for smaller text */
+  margin-bottom: 0;
+  color: black; /* Change the color of h3 to black */
+  text-align: left; /* Align h3 text to the left */
+  margin-left: 20px; /* Add a small gap from the left edge of the screen */
+}
+.search-bar {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-bar form {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  font-size: 16px;
+  width: 300px;
+}
+
+.search-bar button {
+  padding: 8px 15px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ... Your existing CSS rules ... */
+
+
+/* ... Existing styles ... */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .app-drawer {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}
+
+
+
+
+
+/* Style for the search input */
+
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+}
+
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 9999;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+.social-icon {
+  font-size: 24px; /* Adjust the font size as needed */
+  color: black; /* Change the icon color */
+  margin-right: 10px; /* Add spacing between icons (adjust as needed) */
+}
+
+/* Custom hover effect (optional) */
+.social-icon:hover {
+  color: black; /* Change the icon color on hover */
+  transform: scale(1.2); /* Add a slight scale effect on hover */
+}
+.rating-pill {
+  display: inline-block;
+  background-color: #007bff; /* You can adjust the background color as desired */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px; /* Adjust the border-radius to control the pill shape */
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  display: none;
+  background-color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.profile:hover .dropdown-list {
+  display: block;
+}
+
+.dropdown-list li {
+  list-style: none;
+  padding: 8px 16px;
+}
+
+.dropdown-list li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-list li a:hover {
+  background-color: black;
+}
