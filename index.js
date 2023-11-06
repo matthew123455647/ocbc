@@ -11,10 +11,8 @@ app.use(express.static("./public"));
 
 const { login, deposit, withdraw, balance, transfer } = require('./utils/AccountUtil')
 app.post('/login', login);
-app.post('/deposit', deposit);
-app.post('/withdraw', withdraw);
 app.post('/transfer', transfer);
-app.get('/balance/:email', balance);
+
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/" + startPage);
