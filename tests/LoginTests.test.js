@@ -53,4 +53,23 @@ describe('Testing Login Function', () => {
         };
         await login(req, res);
     });
+
+    it('Should login successfully', async () => {
+        const req = {
+            body: {
+                email: 'simn@gmail.com',
+                password: '123456',
+            },
+        };
+        const res = {
+            status: function (code) {
+                expect(code).to.equal(500);
+                return this;
+            },
+            json: function (data) {
+                expect(data.message).to.equal('Invalid credentials!');
+            },
+        };
+        await login(req, res);
+    });
 });

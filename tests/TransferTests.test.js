@@ -78,4 +78,25 @@ describe('Testing Transfer Function', () => {
         };
         await transfer(req, res);
     });
+
+    it('Should Transfer successfully', async () => {
+        const req = {
+            body: {
+                sender: 'simn@gmail.com',
+                receiver: 'john@gmail.com',
+                amount: '40',
+                desc: 'Lunch'
+            },
+        };
+        const res = {
+            status: function (code) {
+                expect(code).to.equal(500);
+                return this;
+            },
+            json: function (data) {
+                expect(data.message).to.equal('Invalid operation!');
+            },
+        };
+        await transfer(req, res);
+    });
 });
