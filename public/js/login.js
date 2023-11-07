@@ -21,7 +21,7 @@ function login() {
 
 		if (response.message == "Login successful!") {
 			sessionStorage.setItem("email", jsonData.email)
-            window.location.href = 'main.html';
+            window.location.href = 'home.html';
 		}
 		else {
 			alert('Login Unsuccessful')

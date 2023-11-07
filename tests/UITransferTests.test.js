@@ -28,7 +28,13 @@ describe('Testing Home Screen', function () {
         const title = await driver.getTitle(); // Get the title of the web page
         expect(title).to.equal("OCBC"); // Assert that title matches "Swag Labs"
   });
-
+    
+  it('Should show lineChart:Graph', async () => {
+    await driver.get('http://localhost:5050/');
+    const title = await driver.getCanvas(); // Get the title of the web page
+    expect(title).to.equal("Graph"); // Assert that title matches "Swag Labs"
+});
+    
   
   it('Should Transfer successfully', async function () {
     const baseUrl = 'http://localhost:' + server.address().port;
