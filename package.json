@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "This is a reference project for the DVOPS subject.",
   "main": "index.js",
-
   "nyc": {
     "include": [
-    "utils/AccountUtil.js"
+      "utils/AccountUtil.js"
     ],
     "exclude": [],
     "reporter": [
-    "html"
+      "html"
     ],
     "all": true,
     "check-coverage": true,
@@ -18,21 +17,21 @@
     "lines": 80,
     "functions": 80,
     "statements": 80
-    },
-
-  "scripts": {
-    "test": "nyc mocha tests/*.test.js"
   },
-
+  "scripts": {
+    "test": "nyc mocha tests/*.test.js --exit"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
     "chai": "^4.3.10",
+    "chromedriver": "^119.0.0",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "mocha": "^10.2.0",
     "moment": "^2.29.4",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "selenium-webdriver": "^4.15.0"
   }
 }

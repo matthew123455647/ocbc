@@ -19,17 +19,23 @@
 
 header {
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: #ff4040;
   position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
 }
 
+.top-container {
+  position: relative;
+  border-radius: 0 0 50% 50% / 0 0 10% 10%; /* Adjust the values as needed */
+  overflow: hidden;
+}
+
 .logo img {
   display: block;
   /*object-fit: cover;*/
-  width: 20%;
+  width: 10%;
 }
 
 /* ... Your existing CSS rules ... */
@@ -38,7 +44,7 @@ header {
   display: flex;
   justify-content: flex-end; /* Align the navbar to the right-hand side */
   align-items: center;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: #ff4040;
   padding: 10px;
 }
 
@@ -76,9 +82,7 @@ header {
 
 /* ... Your existing CSS rules ... */
 /* ... Your existing CSS rules ... */
-
 #showcase {
-  
   background-size: cover; /* Make the background image cover the entire container */
   min-height: 100vh; /* Set the minimum height to cover the full screen height */
   min-width: 100vw; /*Set the minimum width to cover the full screen width */
@@ -92,7 +96,7 @@ header {
   margin-bottom: 10px;
   color: black; /* Change the color of h2 to black */
   text-align: left; /* Align h2 text to the left */
-  margin-left: 20px; /* Add a small gap from the left edge of the screen */
+  margin-left: 50px; /* Add a small gap from the left edge of the screen */
 }
 
 .content h3 {
@@ -100,7 +104,7 @@ header {
   margin-bottom: 0;
   color: black; /* Change the color of h3 to black */
   text-align: left; /* Align h3 text to the left */
-  margin-left: 20px; /* Add a small gap from the left edge of the screen */
+  margin-left: 50px; /* Add a small gap from the left edge of the screen */
 }
 .search-bar {
   display: flex;
@@ -252,3 +256,4 @@ footer {
 .dropdown-list li a:hover {
   background-color: black;
 }
+

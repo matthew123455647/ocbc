@@ -31,3 +31,16 @@ function login() {
 	
 	request.send(JSON.stringify(jsonData));
 }
+
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.className = 'fa fa-eye-slash';
+    } else {
+        passwordInput.type = 'password';
+        eyeIcon.className = 'fa fa-eye';
+    }
+}

@@ -7,30 +7,38 @@ function loadBalance() {
 
     request.onload = function () {
         response = JSON.parse(request.responseText);
-        transactions = response.transactions;
+        transactions = response.transactions; // Update the transactions variable
+        document.getElementById('accountName').innerHTML = response.name;
+        document.getElementById('accountEmail').innerHTML = response.email;
+        document.getElementById('accountPassword').innerHTML = response.password;
+        document.getElementById('accountBalance').innerHTML = response.balance;
+        document.getElementById('accountNRIC').innerHTML = response.nric;
+        document.getElementById('accountContact').innerHTML = response.contact;
+        document.getElementById('accountName').innerHTML = "Welcome " + response.name + "!";
 
-        document.getElementById('accountName').innerHTML = "Welcome " + response.name +"!";
+        document.getElementById('accountID').innerHTML = "<h5>" + response.type + "<h5>";
+        document.getElementById('accountID').innerHTML += "<h5>" + response.id + "<h5>";
 
-        document.getElementById('accountID').innerHTML = "<h5>" + response.type +"<h5>";
-        document.getElementById('accountID').innerHTML += "<h5>" + response.id +"<h5>";
+        document.getElementById('accountBalance').innerHTML = "<h5>Account Balance: $" + response.balance + "<h5>";
 
-        document.getElementById('accountBalance').innerHTML = "<h5>Account Balance: $" + response.balance +"<h5>";
-        
         var html = ''
-        for (var i = 0; i < transactions.length; i++)
-        {
-            var cssClass = ""
-            var amountSign = ""
-            if (transactions[i].type == "W") {
-                cssClass = " class = 'withdrawal'";
+        for (var i = 0; i < transactions.length; i++) {
+            var cssClass = "";
+            var amountSign = "";
+
+            if (transactions[i].type === "W") {
+                cssClass = "withdrawal";
                 amountSign = "-";
+            } else if (transactions[i].type === "D") {
+                cssClass = "deposit";
+                amountSign = "+";
             }
 
-            html += '<tr>' +
+            html += '<tr class="' + cssClass + '">' +
                 '<td>' + transactions[i].datetime + '</td>' +
                 '<td>' + transactions[i].desc + '</td>' +
-                '<td' + cssClass + '>' + amountSign + transactions[i].amount + '</td>' +
-            '</tr>'
+                '<td>' + amountSign + transactions[i].amount + '</td>' +
+                '</tr>';
         }
 
         document.getElementById('tableContent').innerHTML = html;
@@ -92,4 +100,3 @@ function transferFunds() {
 
 	request.send(JSON.stringify(jsonData));
 }
-

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/login.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/login.js"></script>
-	<title>Login Form Using HTML And CSS Only</title>
+	<script src="js/login.js"></script>
+	<title>OCBC</title>
 </head>
+
 <body>
 	<div class="container" id="container">
 		<div class="form-container log-in-container">
@@ -21,8 +23,11 @@
 				<input type="email" class="form-control" id="email" placeholder="Email" />
 
 				<input type="password" class="form-control" id="password" placeholder="Password" />
+				<button id="showPassword" type="button" onclick="togglePasswordVisibility()">
+					<i id="eyeIcon" class="fa fa-eye"></i>
+				</button>
 				<a href="#">Forgot your password?</a>
-                <button type="button" class="btn btn primary" onclick="login()">Login</button>
+				<button type="button" class="btn btn primary" id="loginbutton"onclick="login()">Login</button>
 			</form>
 		</div>
 		<div class="overlay-container">
@@ -35,4 +40,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

@@ -1,34 +1,47 @@
-  /* Adjust the positioning of tabs and transfer content */
-  .tab-container {
-    display: flex;
-  }
+/* Adjust the positioning of tabs and transfer content */
+.tab-container {
+  display: flex;
+}
 
-  .nav-container {
-    flex: 1;
-  }
+.nav-container {
+  flex: 1;
+}
 
-  .transfer-container {
-    flex: 3;
-    background-color: #f0f0f0; /* Set a background color for the transfer content */
-    padding: 20px;
-  }
+.transfer-container {
+  flex: 3;
+  background-color: #f0f0f0; /* Set a background color for the transfer content */
+  padding: 20px;
+}
 
-  .nav .btn.button3.active,
-  .nav .btn.button3:active {
-    background-color: #95d0f2;
-    color: #000000;
-  
-  }
-  
-  .nav .btn.button3 {
-    background-color: rgba(223, 220, 220, 0.905);
-    color: #000000;
-   
-  }
-  .button2 {
-    background-color: #f06565 !important;
+.nav .btn.button3.active,
+.nav .btn.button3:active {
+  background-color: #ff4040;
+  color: #000000;
+
+}
+
+.nav .btn.button3 {
+  background-color: rgba(223, 220, 220, 0.905);
+  color: #000000;
+ 
+}
+.button2 {
+  background-color: #f5dd43 !important;
 }
 
 .button1{
-    background-color: #e64040 !important;
+  background-color: #f93b3b !important;
+}
+
+.transfer-button-container {
+  text-align: right; /* Move the button to the right within its container */
+}
+
+/* Center the modal title and change its color to light blue */
+.modal-title {
+  text-align: center;
+ 
+}
+.btutton4{
+  background-color: rgb(249, 107, 107);
 }

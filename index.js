@@ -9,8 +9,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("./public"));
 
-const { login, deposit, withdraw, balance, transfer } = require('./utils/AccountUtil')
+const { login, balance, transfer } = require('./utils/AccountUtil')
 app.post('/login', login);
+app.get('/balance/:email', balance);
 app.post('/transfer', transfer);
 
 

@@ -100,7 +100,33 @@ async function transfer (req, res) {
     }
 
 }
+
+async function balance (req, res) {
+    try {
+        const email = req.params.email;
+
+        const allAccounts = await readJSON('utils/accounts.json');
+
+        var index = -1;
+
+        for (var i = 0; i < allAccounts.length; i++) {
+            var currUser = allAccounts[i];
+            if (currUser.email == email) { 
+                index = i;
+            }      
+        }
+
+        if (index != -1) {    
+            await fs.writeFile('utils/accounts.json', JSON.stringify(allAccounts), 'utf8');   
+            return res.status(201).json(allAccounts[index]);
+        } else {
+            return res.status(500).json({ message: 'Account not found!' });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+}
   
 module.exports = {
-    readJSON, login, transfer
+    readJSON, login, balance, transfer
 };

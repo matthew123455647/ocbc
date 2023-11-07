@@ -5,15 +5,17 @@
 }
 
 body {
-	background: #f3e0e2;
+	font-family: Arial, Helvetica, sans-serif;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
 	height: 100vh;
-	margin: -20px 0 50px;
-}
+	margin: 0;
+	background-image: url('https://www.ocbc.com/iwov-resources/sg/ocbc/gbc/img/gateway-page/Families100_e.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+  }
 
 h1 {
 	font-weight: bold;
