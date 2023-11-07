@@ -60,5 +60,6 @@ describe('Testing Index Screen', function () {
         after(async function () {
             await driver.quit();
             await server.close();
+            setTimeout(() => { server.destroy(); }, 5000);
         });
     });
