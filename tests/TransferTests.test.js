@@ -37,7 +37,7 @@ describe('Testing Transfer Function', () => {
         await transfer(req, res);
     });
 
-    it('Should Transfer successfully', async () => {
+    it('Should transfer amount exceed balance ', async () => {
         const req = {
             body: {
                 sender: 'simon@gmail.com',
@@ -52,13 +52,13 @@ describe('Testing Transfer Function', () => {
                 return this;
             },
             json: function (data) {
-                expect(data.message).to.equal('Withdrawal amount exceeds balance!');
+                expect(data.message).to.equal('Transfer amount exceeds balance!');
             },
         };
         await transfer(req, res);
     });
 
-    it('Should Transfer successfully', async () => {
+    it('Should receiver email is wrong', async () => {
         const req = {
             body: {
                 sender: 'simon@gmail.com',
@@ -79,7 +79,7 @@ describe('Testing Transfer Function', () => {
         await transfer(req, res);
     });
 
-    it('Should Transfer successfully', async () => {
+    it('Should sender email is wrong', async () => {
         const req = {
             body: {
                 sender: 'simn@gmail.com',

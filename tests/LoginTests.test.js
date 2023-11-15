@@ -35,7 +35,7 @@ describe('Testing Login Function', () => {
         await login(req, res);
     });
 
-    it('Should login successfully', async () => {
+    it('Should login unsuccessful', async () => {
         const req = {
             body: {
                 email: 'simon@gmail.com',

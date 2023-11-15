@@ -58,8 +58,11 @@ describe('Testing Index Screen', function () {
         });
 
 
-        after(async function () {
-            //await driver.quit();
-            await server.close();
-        });
+  
     });
+
+    after(async function () {
+        await driver.quit();
+        await server.close()
+        process.exit(0)
+      });
