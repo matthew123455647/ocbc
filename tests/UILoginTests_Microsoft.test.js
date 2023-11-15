@@ -51,16 +51,48 @@ describe('Testing Index Screen', function () {
         await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
 
 
-        // Assert that the URL matches the expected URL
-        const currentUrl = await driver.getCurrentUrl();
-        expect(currentUrl).to.equal('http://localhost:' + server.address().port + '/home.html')
+        // Locate and interact with the Login button
+        const transferButtonModal = await driver.findElement(By.id('transferModalButton'));
+        await transferButtonModal.click();
+
+        // Wait for recipient element to be present
+        const recipientElement = await driver.findElement(By.id('recipient'));
+        await driver.wait(until.elementIsVisible(recipientElement), 5000);
+        await recipientElement.click();
+        await recipientElement.sendKeys('john@gmail.com');
+
+        // Wait for amount element to be present
+        const amountElement = await driver.findElement(By.id('amount'));
+        await amountElement.click();
+        await amountElement.sendKeys('100');
+
+        const descElement = await driver.findElement(By.id('desc'));
+        await descElement.click();
+        await descElement.sendKeys('Lunch');
+
+        // Locate the table element and locate all tr within table
+        const tableBefore = await driver.findElement(By.tagName('table')); // Replace with the actual ID of your table
+        const rowsBefore = await tableBefore.findElements(By.tagName('tr'));
+        const beforeCount = rowsBefore.length
+
+        // CLick for transfer button
+        const transferButton = await driver.findElement(By.id('transferButton'));
+        await transferButton.click(); // Locate and interact with the Login button
+
+        // Wait for the modal to dismiss
+        await driver.manage().setTimeouts({ implicit: 5000 });
+
+        // Locate the table element and locate all tr within table
+        const tableUpdated = await driver.findElement(By.tagName('table'));
+        const rowsUpdated = await tableUpdated.findElements(By.tagName('tr'));
+
+        // Assert that the table rows increased by 1
+        expect(rowsUpdated.length).to.equal(beforeCount + 1);
 
     });
 
 
-
 });
-
 after(async function () {
     await driver.quit();
     await server.close()

@@ -42,7 +42,7 @@ describe('Testing Transfer Function', () => {
             body: {
                 sender: 'simon@gmail.com',
                 receiver: 'john@gmail.com',
-                amount: '4000',
+                amount: '5000',
                 desc: 'Lunch'
             },
         };
