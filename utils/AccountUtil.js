@@ -73,7 +73,7 @@ async function transfer (req, res) {
                 })
                 currUser.balance = currUser.balance - parseFloat(amount);
                 if (currUser.balance < 0) {
-                    return res.status(201).json({ message: 'Withdrawal amount exceeds balance!' });
+                    return res.status(201).json({ message: 'Transfer amount exceeds balance!' });
                 }
                 senderFound = true;
             }

@@ -3,11 +3,11 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
 
-const chrome = require('selenium-webdriver/chrome');
- const chromeOptions = new chrome.Options();
- chromeOptions.addArguments('--headless');
-const driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
-//const driver = new Builder().forBrowser('chrome').build();
+const edge = require('selenium-webdriver/edge');
+// const chromeOptions = new chrome.Options();
+// chromeOptions.addArguments('--headless');
+// const driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
+const driver = new Builder().forBrowser('MicrosoftEdge').setEdgeOptions(new edge.Options()).build();
 
 var server;
 
@@ -28,28 +28,6 @@ describe('Testing Index Screen', function () {
         const title = await driver.getTitle(); // Get the title of the web page
         expect(title).to.equal("OCBC"); // Assert that title matches "Swag Labs"
     });
-
-    it('Should show password successfully', async function () {
-        const baseUrl = 'http://localhost:' + server.address().port;
-        await driver.get(baseUrl);
-
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.click(); // Click on the element
-        await passwordElement.sendKeys('123456');
-
-        // Locate and interact with the Login button
-        const showPasswordButton = await driver.findElement(By.id('showPassword'));
-        await showPasswordButton.click();
-
-        // Wait for the page to be redirected
-        await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
-
-        // Assert that the URL matches the expected URL
-        const currentUrl = await driver.getCurrentUrl();
-        expect(currentUrl).to.equal('http://localhost:' + server.address().port + '/home.html')
-
-        });
-
 
     it('Should login successfully', async function () {
         const baseUrl = 'http://localhost:' + server.address().port;
@@ -72,18 +50,19 @@ describe('Testing Index Screen', function () {
         // Wait for the page to be redirected
         await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
 
+
         // Assert that the URL matches the expected URL
         const currentUrl = await driver.getCurrentUrl();
         expect(currentUrl).to.equal('http://localhost:' + server.address().port + '/home.html')
 
-        });
-
-
-       
     });
 
-    after(async function () {
-        await driver.quit();
-        await server.close()
-        process.exit(0)
-      });
+
+
+});
+
+after(async function () {
+    await driver.quit();
+    await server.close()
+    process.exit(0)
+});

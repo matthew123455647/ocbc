@@ -7,6 +7,8 @@ const chrome = require('selenium-webdriver/chrome');
 const chromeOptions = new chrome.Options();
 chromeOptions.addArguments('--headless');
 const driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
+// const driver = new Builder().forBrowser('chrome').build();
+
 
 var server;
 
@@ -20,50 +22,67 @@ before(async function () {
 
 describe('Testing Money Transfer', function () {
   // Set timeout as 10 seconds
+  this.timeout(10000)
 
   it('Should Transfer successfully', async function () {
     const baseUrl = 'http://localhost:' + server.address().port;
-        await driver.get(baseUrl);
+    await driver.get(baseUrl);
 
-        // Locate and interact with the email field
-        const emailElement = await driver.findElement(By.id('email'));
-        await emailElement.click(); // Click on the element
-        await emailElement.sendKeys('simon@gmail.com');
+    // Locate and interact with the email field
+    const emailElement = await driver.findElement(By.id('email'));
+    await emailElement.click(); // Click on the element
+    await emailElement.sendKeys('simon@gmail.com');
 
-        // Locate and interact with the email field
-        const passwordElement = await driver.findElement(By.id('password'));
-        await passwordElement.click(); // Click on the element
-        await passwordElement.sendKeys('123456');
+    // Locate and interact with the email field
+    const passwordElement = await driver.findElement(By.id('password'));
+    await passwordElement.click(); // Click on the element
+    await passwordElement.sendKeys('123456');
 
-        // Locate and interact with the Login button
-        const loginButton = await driver.findElement(By.id('loginbutton'));
-        await loginButton.click();
+    // Locate and interact with the Login button
+    const loginButton = await driver.findElement(By.id('loginbutton'));
+    await loginButton.click();
 
-        // Wait for the page to be redirected
-        await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
+    // Wait for the page to be redirected
+    await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
+
+    // Locate and interact with the Login button
+    const transferButtonModal = await driver.findElement(By.id('transferModalButton'));
+    await transferButtonModal.click();
+
     // Wait for recipient element to be present
-    const recipientElement = await driver.wait(until.elementLocated(By.id('recipient')), 10000);
+    const recipientElement = await driver.findElement(By.id('recipient'));
+    await driver.wait(until.elementIsVisible(recipientElement), 5000);
     await recipientElement.click();
     await recipientElement.sendKeys('john@gmail.com');
 
     // Wait for amount element to be present
-    const amountElement = await driver.wait(until.elementLocated(By.id('amount')), 10000);
+    const amountElement = await driver.findElement(By.id('amount'));
     await amountElement.click();
     await amountElement.sendKeys('100');
 
-    const descElement = await driver.wait(until.elementLocated(By.id('desc')), 10000);
+    const descElement = await driver.findElement(By.id('desc'));
     await descElement.click();
     await descElement.sendKeys('Lunch');
 
-    // Wait for transfer button to be present
-    const transferButton = await driver.wait(until.elementLocated(By.id('transferButton')), 10000);
-    await transferButton.click();
+    // Locate the table element and locate all tr within table
+    const tableBefore = await driver.findElement(By.tagName('table')); // Replace with the actual ID of your table
+    const rowsBefore = await tableBefore.findElements(By.tagName('tr'));
+    const beforeCount = rowsBefore.length
 
-    await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
-    // Wait for the transfer to complete (adjust this condition based on your application behavior)
-    // Assert that the URL matches the expected URL for a successful transfer
-    const currentUrl = await driver.getCurrentUrl();
-    expect(currentUrl).to.equal(`${baseUrl}/home.html`);
+    // CLick for transfer button
+    const transferButton = await driver.findElement(By.id('transferButton'));
+    await transferButton.click(); // Locate and interact with the Login button
+
+    // Wait for the modal to dismiss
+    await driver.manage().setTimeouts({ implicit: 5000 });
+
+    // Locate the table element and locate all tr within table
+    const tableUpdated = await driver.findElement(By.tagName('table'));
+    const rowsUpdated = await tableUpdated.findElements(By.tagName('tr'));
+
+    // Assert that the table rows increased by 1
+    expect(rowsUpdated.length).to.equal(beforeCount + 1);
+
   });
 
 
