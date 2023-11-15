@@ -17,6 +17,17 @@
   font-family: "Poppins";
 }
 
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: right; /* Align the text to the right */
+}
+
+.nav-item {
+  display: inline-block; /* Display the menu items horizontally */
+  margin-left: 10px; /* Add some margin to separate the menu items */
+}
 header {
   width: 100%;
   background-color: #ff4040;

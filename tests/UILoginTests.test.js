@@ -29,6 +29,28 @@ describe('Testing Index Screen', function () {
         expect(title).to.equal("OCBC"); // Assert that title matches "Swag Labs"
     });
 
+    it('Should show password successfully', async function () {
+        const baseUrl = 'http://localhost:' + server.address().port;
+        await driver.get(baseUrl);
+
+        const passwordElement = await driver.findElement(By.id('password'));
+        await passwordElement.click(); // Click on the element
+        await passwordElement.sendKeys('123456');
+
+        // Locate and interact with the Login button
+        const showPasswordButton = await driver.findElement(By.id('showPassword'));
+        await showPasswordButton.click();
+
+        // Wait for the page to be redirected
+        await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
+
+        // Assert that the URL matches the expected URL
+        const currentUrl = await driver.getCurrentUrl();
+        expect(currentUrl).to.equal('http://localhost:' + server.address().port + '/home.html')
+
+        });
+
+
     it('Should login successfully', async function () {
         const baseUrl = 'http://localhost:' + server.address().port;
         await driver.get(baseUrl);
@@ -48,11 +70,11 @@ describe('Testing Index Screen', function () {
         await loginButton.click();
 
         // Wait for the page to be redirected
-        await driver.wait(until.urlIs(baseUrl + '/main.html'), 10000);
+        await driver.wait(until.urlIs(baseUrl + '/home.html'), 10000);
 
         // Assert that the URL matches the expected URL
         const currentUrl = await driver.getCurrentUrl();
-        expect(currentUrl).to.equal('http://localhost:' + server.address().port + '/main.html')
+        expect(currentUrl).to.equal('http://localhost:' + server.address().port + '/home.html')
 
         });
 
@@ -60,6 +82,7 @@ describe('Testing Index Screen', function () {
         after(async function () {
             await driver.quit();
             await server.close();
+           
             setTimeout(() => { server.destroy(); }, 5000);
         });
     });
