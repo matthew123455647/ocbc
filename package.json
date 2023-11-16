@@ -9,7 +9,7 @@
     ],
     "exclude": [],
     "reporter": [
-      "html"
+      "html", "text-summary"
     ],
     "all": true,
     "check-coverage": true,
