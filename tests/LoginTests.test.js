@@ -19,7 +19,7 @@ describe('Testing Login Function', () => {
     it('Should login successfully', async () => {
         const req = {
             body: {
-                email: 'simon@gmail.com',
+                email: 'john@gmail.com',
                 password: '123456',
             },
         };
