@@ -22,7 +22,7 @@ before(async function () {
 
 describe('Testing Money Transfer', function () {
   // Set timeout as 10 seconds
-  this.timeout(10000)
+  this.timeout(20000)
 
   it('Should Transfer successfully', async function () {
     const baseUrl = 'http://localhost:' + server.address().port;

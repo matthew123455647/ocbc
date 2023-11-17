@@ -19,7 +19,7 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
      })
  });
 
- describe('Testing Index Screen', function () {
+ describe('Testing Firefox browser', function () {
 
     this.timeout(100000); // Set timeout as 10 seconds
 
